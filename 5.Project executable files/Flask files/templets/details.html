@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OptiVision</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: white;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        header{
+            background-color: #243B55;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        header nav a {
+            margin-left: 1rem;
+            text-decoration: none;
+            color: rgb(250, 248, 248);
+            font-size: 1.1rem;
+        }
+
+        header nav a:hover {
+            color: blue;
+        }
+
+        .hero {
+            background: url('/static/background.jpeg') no-repeat center center/cover;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            padding-left: 2rem;
+            color: white;
+            opacity: 0.8;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            max-width: 600px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        form label {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        form input[type="file"] {
+            margin-bottom: 1rem;
+        }
+
+        .predict-btn {
+            background-color: green;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .predict-btn:hover {
+            background-color: darkgreen;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="{{ url_for('index') }}" class="logo">OptiVision</a>
+        <nav>
+            <a href="{{ url_for('index') }}">Home</a>
+            <a href="{{ url_for('pred') }}">Prediction</a>
+        </nav>
+    </header>
+    <div class="hero">
+        <h1>Cataract Prediction</h1>
+        <p>Predicting cataracts using transfer learning leveraging pre-trained deep learning models on large datasets for image classification tasks.</p>
+        <form action="{{ url_for('output') }}" method="post" enctype="multipart/form-data">
+            <label for="file">Choose a file:</label>
+            <input type="file" id="file" name="file" required>
+            <br>
+            <input type="submit" value="Predict" class="predict-btn">
+        </form>
+    </div>
+    <script>
+        // Add functionality to navigation bar (optional):
+        const navLinks = document.querySelectorAll('header nav a');
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                // Prevent default anchor tag behavior
+                e.preventDefault();
+                // Redirect to the clicked link's href using window.location
+                window.location.href = e.target.href;
+            });
+        });
+    </script>
+</body>
+</html>

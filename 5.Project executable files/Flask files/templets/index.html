@@ -1,0 +1,111 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OptiCheckup</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar {
+            background-color: #243B55;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+        }
+
+        .nav-links a, .appointment-btn {
+            color: #fff;
+            margin-right: 1rem;
+            text-decoration: none;
+        }
+
+        .appointment-btn {
+            background-color: #1E90FF;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .hero {
+            background: url('/static/background.jpeg') no-repeat center center/cover;
+            opacity: 0.85;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+        }
+
+        .content h1 {
+            color: #fff;
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .content p {
+            color: #fff;
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .get-started-btn {
+            color: #fff;
+            background-color: #1E90FF;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .get-started-btn:hover {
+            background-color: #1a2e42; /* Darkened button color on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="{{ url_for('index') }}" class="logo">OptiVision</a>
+        <div class="nav-links">
+            <a href="{{ url_for('index') }}">Home</a>
+            <a href="{{ url_for('about') }}">About</a>
+            <a href="{{ url_for('pred') }}">Prediction</a>
+            <a href="{{ url_for('index') }}">Contact</a>
+            <button class="appointment-btn">Make an Appointment</button>
+        </div>
+    </div>
+    <div class="hero">
+        <div class="content">
+            <h1>CRYSTAL CLEAR VISION</h1>
+            <p>Revolutionizing Cataract Prediction through Transfer Learning Mastery</p>
+            <button class="get-started-btn" id="getStartedBtn">GET STARTED</button>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('getStartedBtn').onclick = function() {
+            window.location.href = '/pred';
+        };
+    </script>
+</body>
+</html>
